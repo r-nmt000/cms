@@ -27,6 +27,7 @@ services:
       - SESSION_DRIVER=redis
       - QUEUE_DRIVER=redis
       - REDIS_HOST=redis
+      - PHP_IDE_CONFIG=serverName=app
 
   web:
     image: nginx:1.17-alpine
