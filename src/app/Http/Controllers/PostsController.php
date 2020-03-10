@@ -6,9 +6,8 @@ namespace App\Http\Controllers;
 
 class PostsController extends Controller
 {
-    public function index() {
-        return "it works";
-
+    public function index($id) {
+        return "it works". $id;
     }
 
 }
