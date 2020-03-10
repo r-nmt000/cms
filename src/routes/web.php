@@ -21,3 +21,7 @@ Route::get('/example', function () {
     return "Hi you";
 });
 
+Route::get('/post/{id}/{name}', function ($id, $name) {
+    return "This is post number ". $id . " " . $name;
+});
+
