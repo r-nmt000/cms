@@ -18,9 +18,9 @@ class PostsController extends Controller
 
     }
 
-    public function show($id) {
-        return "show " . $id;
-
+    public function showPost($id, $name, $password) {
+//        return view('post')->with('id', $id);
+        return view('post', compact('id', 'name', 'password'));
     }
 
     public function update() {
