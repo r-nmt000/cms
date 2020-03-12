@@ -34,3 +34,5 @@ Route::get('/admin/posts/example', array('as'=> 'admin.home', function () {
 //
 
 Route::resource('/posts', 'PostsController');
+
+Route::get('/contact', 'PostsController@contact');
