@@ -38,3 +38,7 @@ Route::get('/admin/posts/example', array('as'=> 'admin.home', function () {
 Route::get('/contact', 'PostsController@contact');
 
 Route::get('post/{id}/{name}/{password}', 'PostsController@showPost');
+
+Route::get('/insert', function() {
+    DB::insert('insert into posts(title, body) value(?, ?)', ['PHP with Laravel', 'Laravel is the best thing that has happened to PHP']);
+});
