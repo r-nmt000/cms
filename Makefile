@@ -28,6 +28,8 @@ ps:
 	docker-compose ps
 app:
 	docker-compose exec app ash -l
+migrate:
+	docker-compose exec app php artisan migrate
 fresh:
 	docker-compose exec app php artisan migrate:fresh
 seed:
