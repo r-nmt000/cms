@@ -48,3 +48,8 @@ Route::get('/read', function() {
     $results = DB::select('select * from posts where id = ?', [1]);
     return var_dump($results);
 });
+
+Route::get('/update', function() {
+    $updated = DB::update('update posts set title = "Update title" where id = ?', [1]);
+    return $updated;
+});
