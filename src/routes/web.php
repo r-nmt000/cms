@@ -73,3 +73,19 @@ Route::get('/findWhere', function() {
     $posts = Post::where('id', 2)->orderBy('id', 'desc')->take(1)->get();
     return $posts;
 });
+
+Route::get('/basicInsert', function() {
+    $post = new Post();
+    $post->title = "new title";
+    $post->body = "new body";
+
+    $post->save();
+});
+
+Route::get('/basicInsert2', function() {
+    $post = Post::find(2);
+    $post->title = "new title2";
+    $post->body = "new body2";
+
+    $post->save();
+});
