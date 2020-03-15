@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Post;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,4 +53,18 @@ Route::get('/read', function() {
 Route::get('/update', function() {
     $updated = DB::update('update posts set title = "Update title" where id = ?', [1]);
     return $updated;
+});
+
+Route::get('/delete', function() {
+    $deleted = DB::delete('delete from posts where id = ?', [1]);
+    return $deleted;
+});
+
+
+// Eloquent ROM
+Route::get('/find', function() {
+    $posts = Post::all();
+    foreach ($posts as $post) {
+        return $post->title;
+    }
 });
