@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Post;
+use App\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,9 +23,9 @@ Route::get('/example', function () {
     return "Hi you";
 });
 
-Route::get('/post/{id}/{name}', function ($id, $name) {
-    return "This is post number ". $id . " " . $name;
-});
+//Route::get('/post/{id}/{name}', function ($id, $name) {
+//    return "This is post number ". $id . " " . $name;
+//});
 
 Route::get('/admin/posts/example', array('as'=> 'admin.home', function () {
     $url = route('admin.home');
@@ -88,4 +89,13 @@ Route::get('/basicInsert2', function() {
     $post->body = "new body2";
 
     $post->save();
+});
+
+// Eloquent relationship
+Route::get('/user/{id}/post', function($id){
+    return User::find($id)->post;
+});
+
+Route::get('/post/{id}/user', function($id){
+    return Post::find($id)->user;
 });
