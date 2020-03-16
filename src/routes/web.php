@@ -99,3 +99,12 @@ Route::get('/user/{id}/post', function($id){
 Route::get('/post/{id}/user', function($id){
     return Post::find($id)->user;
 });
+
+
+Route::get('/user/{id}/posts', function($id){
+    $user = User::find($id);
+    foreach ($user->posts as $post) {
+        echo $post->title . "<br>";
+    }
+});
+
