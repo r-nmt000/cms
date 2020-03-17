@@ -108,3 +108,9 @@ Route::get('/user/{id}/posts', function($id){
     }
 });
 
+Route::get('/user/{id}/role', function($id) {
+    $user = User::find($id);
+    foreach ($user->roles as $role) {
+        return $role->name;
+    }
+});
