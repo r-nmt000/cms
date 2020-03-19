@@ -34,6 +34,8 @@ rollback:
 	docker-compose exec app php artisan migrate:rollback
 fresh:
 	docker-compose exec app php artisan migrate:fresh
+refresh:
+	docker-compose exec app php artisan migrate:refresh
 seed:
 	docker-compose exec app php artisan db:seed
 tinker:

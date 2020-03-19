@@ -132,3 +132,12 @@ Route::get('/user/country', function() {
     }
 
 });
+
+
+// Polymorphic relation
+Route::get('/user/photo', function() {
+    $user = User::find(1);
+    foreach ($user->photos as $photo) {
+        echo $photo . '<br>';
+    }
+});
