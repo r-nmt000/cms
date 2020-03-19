@@ -2,6 +2,7 @@
 
 use App\Country;
 use App\Photo;
+use App\Tag;
 use Illuminate\Support\Facades\Route;
 use App\Post;
 use App\User;
@@ -153,5 +154,12 @@ Route::get('post/tag', function() {
     $post = Post::find(1);
     foreach ($post->tags as $tag) {
         echo $tag->name;
+    }
+});
+
+Route::get('tag/post', function() {
+    $tag = Tag::find(1);
+    foreach ($tag->posts as $post) {
+        echo $post;
     }
 });
