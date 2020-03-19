@@ -1,6 +1,7 @@
 <?php
 
 use App\Country;
+use App\Photo;
 use Illuminate\Support\Facades\Route;
 use App\Post;
 use App\User;
@@ -140,4 +141,9 @@ Route::get('/user/photo', function() {
     foreach ($user->photos as $photo) {
         echo $photo . '<br>';
     }
+});
+
+Route::get('photo/{id}/post', function($id) {
+    $photo = Photo::findOrFail($id);
+    return $photo->imageable;
 });
