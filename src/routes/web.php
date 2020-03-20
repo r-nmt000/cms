@@ -1,5 +1,6 @@
 <?php
 
+use App\Address;
 use App\Country;
 use App\Photo;
 use App\Tag;
@@ -162,4 +163,12 @@ Route::get('tag/post', function() {
     foreach ($tag->posts as $post) {
         echo $post;
     }
+});
+
+Route::get('/user/address/insert/', function() {
+    $user = User::findOrFail(1);
+
+    $address = new Address(['name'=>'1234 Hourston av NY NY 11218']);
+
+    $user->address()->save($address);
 });
