@@ -165,10 +165,18 @@ Route::get('tag/post', function() {
     }
 });
 
+// CRUD related data
 Route::get('/user/address/insert/', function() {
     $user = User::findOrFail(1);
 
     $address = new Address(['name'=>'1234 Hourston av NY NY 11218']);
 
     $user->address()->save($address);
+});
+
+Route::get('/user/address/update/', function() {
+    $address = Address::whereUserId(1)->first();
+    $address->name = "4434 Update Av, alaska";
+    $address->save();
+    return 'successfully updated';
 });
