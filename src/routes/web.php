@@ -180,3 +180,13 @@ Route::get('/user/address/update/', function() {
     $address->save();
     return 'successfully updated';
 });
+
+Route::get('/user/address/read', function() {
+    $user  = User::findOrFail(1);
+    echo $user->address;
+});
+
+Route::get('/user/address/delete', function() {
+    $user  = User::findOrFail(1);
+    echo $user->address->delete();
+});
