@@ -4,6 +4,7 @@ use App\Address;
 use App\Country;
 use App\Photo;
 use App\Tag;
+use App\Video;
 use Illuminate\Support\Facades\Route;
 use App\Post;
 use App\User;
@@ -217,4 +218,17 @@ Route::get('/user/photo/update/', function() {
 Route::get('/user/photo/delete/', function() {
     $user = User::findOrFail(1);
     $photo = $user->photos()->delete();
+});
+
+// CRUD related data (polymorphic many to many relationship)
+Route::get('/post/tag/create/', function() {
+    $post = Post::findOrFail(1);
+    $tag1 = Tag::findOrFail(1);
+
+    $post->tags()->save($tag1);
+
+    $video = Video::findOrFail(1);
+    $tag2 = Tag::find(2);
+
+    $video->tags()->save($tag2);
 });

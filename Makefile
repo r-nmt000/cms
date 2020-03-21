@@ -36,6 +36,8 @@ fresh:
 	docker-compose exec app php artisan migrate:fresh
 refresh:
 	docker-compose exec app php artisan migrate:refresh
+status:
+	docker-compose exec app php artisan migrate:status
 seed:
 	docker-compose exec app php artisan db:seed
 tinker:
