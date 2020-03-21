@@ -165,7 +165,7 @@ Route::get('tag/post', function() {
     }
 });
 
-// CRUD related data
+// CRUD related data (one to one relation)
 Route::get('/user/address/insert/', function() {
     $user = User::findOrFail(1);
 
@@ -189,4 +189,32 @@ Route::get('/user/address/read', function() {
 Route::get('/user/address/delete', function() {
     $user  = User::findOrFail(1);
     echo $user->address->delete();
+});
+
+
+// CRUD related data (polymorphic relationship)
+Route::get('/user/photo/insert/', function() {
+    $user = User::findOrFail(1);
+    $photo = new Photo(['path'=>'test path2!']);
+    $user->photos()->save($photo);
+});
+
+Route::get('/user/photo/read/', function() {
+    $user = User::findOrFail(1);
+    foreach ($user->photos as $photo) {
+        echo $photo . '<br>';
+    }
+});
+
+Route::get('/user/photo/update/', function() {
+    $user = User::findOrFail(1);
+    $photo = $user->photos()->first();
+    $photo->path = "updated!!";
+    $photo->save();
+    return 'successfully updated';
+});
+
+Route::get('/user/photo/delete/', function() {
+    $user = User::findOrFail(1);
+    $photo = $user->photos()->delete();
 });
